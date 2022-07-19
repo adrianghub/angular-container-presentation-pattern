@@ -5,7 +5,7 @@ import { User } from '../model/user';
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
-  styleUrls: ['./users.component.css']
+  styleUrls: ['./users.component.css'],
 })
 export class UsersComponent implements OnInit {
   users: User[];
@@ -23,6 +23,11 @@ export class UsersComponent implements OnInit {
 
   create() {
     this.selectedUser = User.createBlank();
+  }
+
+  deleteUser(user: User) {
+    this.selectedUser = null;
+    this.users = this.data.delete(user);
   }
 
   save(user: User) {

@@ -3,14 +3,14 @@ import {
   Input,
   ChangeDetectionStrategy,
   Output,
-  EventEmitter
+  EventEmitter,
 } from '@angular/core';
 
 @Component({
   selector: 'app-user-tile',
   templateUrl: './user-tile.component.html',
   styleUrls: ['./user-tile.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UserTileComponent {
   @Input() vm: {
@@ -20,8 +20,13 @@ export class UserTileComponent {
   };
   @Input() active: boolean;
   @Output() selected: EventEmitter<void> = new EventEmitter<void>();
+  @Output() toDelete: EventEmitter<void> = new EventEmitter<void>();
 
   select() {
     this.selected.emit();
+  }
+
+  delete() {
+    this.toDelete.emit();
   }
 }

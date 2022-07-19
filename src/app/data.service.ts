@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { User } from './model/user';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DataService {
   users: User[] = [
@@ -11,8 +11,8 @@ export class DataService {
     { id: '3', name: 'Jane', lastName: 'Doe', tags: ['angular', 'promise'] },
     { id: '4', name: 'Jane', lastName: 'Doe', tags: ['angular', 'typescript'] },
     { id: '5', name: 'Jane', lastName: 'Doe', tags: ['angular', 'typescript'] },
-    { id: '6', name: 'Jane', lastName: 'Doe', tags: ['angular', 'typescript'] }
-  ].map(e => new User(e.name, e.lastName, e.tags, e.id));
+    { id: '6', name: 'Jane', lastName: 'Doe', tags: ['angular', 'typescript'] },
+  ].map((e) => new User(e.name, e.lastName, e.tags, e.id));
 
   getUsers(): User[] {
     return [...this.users];
@@ -24,7 +24,12 @@ export class DataService {
   }
 
   edit(user: User) {
-    const index = this.users.findIndex(u => u.id === user.id);
+    const index = this.users.findIndex((u) => u.id === user.id);
     this.users[index] = user.clone();
+  }
+
+  delete(user: User) {
+    this.users = [...this.users].filter((u) => u.id !== user.id);
+    return this.users;
   }
 }

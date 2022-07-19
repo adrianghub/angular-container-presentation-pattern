@@ -1,9 +1,9 @@
-<article [class.highlighted]="active" (click)="select()">
-  <img>
-  <p>{{vm.name}} {{vm.lastName}}</p>
+<article [class.highlighted]="active">
+  <img />
+  <p>{{ vm.name }} {{ vm.lastName }}</p>
   <p>
-    <span *ngFor="let tag of vm.tags">#{{tag}} </span>
+    <span *ngFor="let tag of vm.tags">#{{ tag }} </span>
   </p>
   <button (click)="select()">Edit</button>
-  <button>Delete</button>
+  <button (click)="delete()">Delete</button>
 </article>
